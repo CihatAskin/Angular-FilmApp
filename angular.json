@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FilmApp"
+    }
+  },
+  "defaultProject": "FilmApp",
+  "cli": {
+    "analytics": false
+  }
 }
