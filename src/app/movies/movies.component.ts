@@ -19,6 +19,7 @@ export class MoviesComponent {
         this.getMovies();
 
     }
+
     onSelect(movie: Movie): void {
         this.selectedMovie = movie;
     }
@@ -28,14 +29,18 @@ export class MoviesComponent {
             .subscribe(movies => {//await
                 this.movies = movies;
             });
-
     }
+
     add(name: string, imageUrl: string, description: string): void {
-        this.movieService.add({ name, imageUrl, description } as Movie)
+
+        let id = this.movies.length + 1;
+        this.movieService.add({ id, name, imageUrl, description } as Movie)
             .subscribe(movie => this.movies.push(movie));
     }
-    // movie: Movie={id:1,name:'Movie Name'};
-    // getTitle() {
-    //     return this.title;
-    // };
+
+    delete(movie: Movie): void {
+
+        this.movies = this.movies.filter(m => m !== movie);
+        this.movieService.delete(movie).subscribe();
+    }
 }

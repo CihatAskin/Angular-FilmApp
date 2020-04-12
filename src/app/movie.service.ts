@@ -33,6 +33,11 @@ export class MovieService {
 
   add(movie: Movie): Observable<Movie> {
     return this.client.post<Movie>(this.apiMovieUrl, movie);
+  }
+  
+  delete(movie: Movie): Observable<Movie> {
+
+    return this.client.delete<Movie>(this.apiMovieUrl + '/' + movie.id);
 
   }
 }
