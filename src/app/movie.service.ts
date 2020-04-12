@@ -23,11 +23,16 @@ export class MovieService {
     return this.client.get<Movie>(this.apiMovieUrl + '/' + id);
   }
   update(movie: Movie) {
-    
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     }
 
     return this.client.put(this.apiMovieUrl, movie, httpOptions)
+  }
+
+  add(movie: Movie): Observable<Movie> {
+    return this.client.post<Movie>(this.apiMovieUrl, movie);
+
   }
 }
